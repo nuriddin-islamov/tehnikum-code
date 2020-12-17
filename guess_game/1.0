@@ -1,0 +1,30 @@
+import random
+
+choose_from = list(range(1, 10))
+
+rand_numb = random.choice(choose_from)
+print(rand_numb)
+print("""Hey there, listen,
+
+I have just generated a random number!
+
+All you need to do is to find that number by taking some guesses))
+
+Take your chance and have a go.
+""")
+# user_input = int(input("Guess the number > "))
+
+user_input = int(input("Guess the number > "))
+
+while user_input != rand_numb:
+    if user_input in choose_from:
+        if user_input > rand_numb:
+            user_input = input('Your number is BIG. Guess a smaller one > ')
+        elif user_input < rand_numb:
+            user_input = input('Your number is SMALLER. Guess a bigger one > ')
+        else:
+            break
+    else:
+        user_input = int(input("Your number isn't in range Choose from 1 to 10. Try again > "))
+
+print(f"Exactly, number was {rand_numb}")
