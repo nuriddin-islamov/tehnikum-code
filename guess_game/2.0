@@ -1,0 +1,59 @@
+import random
+import _random
+import time
+
+print("Hi, let's play a game :)")
+time.sleep(1.5)
+print("""Here are the rules:
+""")
+# time.sleep(2)
+
+print("""
+1. I will choose a random number from the range you provide
+2. You will have to guess the number in 3 chances
+3. Good luck
+""")
+# time.sleep(7)
+print("Let's gooo...")
+time.sleep(1)
+# set upper and lower bounds
+
+lower = int(input("Set a lower bound for range: > "))
+upper = int(input("Set an upper bound for range: > "))
+
+
+
+while lower >= upper:
+    print(f'''
+It is wrong range! {lower} is not bigger than {upper} Try again...''')
+    lower = int(input("Set a lower bound for range again: > "))
+    upper = int(input("Set an upper bound for range again: > "))
+
+# generate a random number and store in x
+
+x = random.randrange(lower, upper+1)
+print(x)
+
+# guess count (initially 0)
+count = 1
+
+# guess the number through input
+
+usr_input = int(input("Guess the number > "))
+
+while count < 3:
+    if x == usr_input and count == 3:
+        print(f"""Exactly, the number was {x}
+                YOU WIN! in {count} guess(es)""")
+        break
+    elif usr_input > x and lower <= usr_input <= upper:
+        print("You guessed too high.")
+        usr_input = int(input("Guess again > "))
+    elif usr_input < x and lower <= usr_input <= upper:
+        print("You guessed too low")
+        usr_input = int(input('Guess again > '))
+    else:
+        usr_input = int(input('Number is not in the range, try again... > '))
+    count += 1
+else:
+    print(f"""sorry, you have used your {count} chances and failed...""")
